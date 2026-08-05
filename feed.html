@@ -1,26 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SocialBook Feed</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f0f2f5;
+}
+
+.header{
+background:linear-gradient(135deg,#7b2cff,#2196f3);
+color:white;
+padding:15px;
+font-size:24px;
+font-weight:bold;
+text-align:center;
+}
+
+.container{
+max-width:700px;
+margin:20px auto;
+padding:10px;
+}
+
+.post-box{
+background:white;
+padding:15px;
+border-radius:12px;
+margin-bottom:20px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.post-box textarea{
+width:100%;
+height:80px;
+padding:10px;
+border:1px solid #ddd;
+border-radius:8px;
+resize:none;
+}
+
+.post-btn{
+margin-top:10px;
+padding:10px 20px;
+border:none;
+background:#2196f3;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.post{
+background:white;
+padding:15px;
+border-radius:12px;
+margin-bottom:15px;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.user{
+font-weight:bold;
+margin-bottom:10px;
+}
+
+.like-btn{
+margin-top:10px;
+padding:8px 15px;
+border:none;
+background:#7b2cff;
+color:white;
+border-radius:6px;
+cursor:pointer;
+}
+</style>
+</head>
+<body>
+
 <div class="header">
 SocialBook Feed
 </div>
 
-<div class="post">
+<div class="container">
+
+<div class="post-box">
 <h3>Create Post</h3>
-
-<input type="text" id="postInput" placeholder="What's on your mind?"
-style="width:100%;padding:10px;">
-
-<br><br>
-
-<button onclick="addPost()">Post</button>
+<br>
+<textarea id="postInput" placeholder="What's on your mind?"></textarea>
+<br>
+<button class="post-btn" onclick="addPost()">Post</button>
 </div>
 
-<div id="posts"></div>
+<div id="posts">
+
+<div class="post">
+<div class="user">Omor Faruk</div>
+<p>🚀 Welcome to SocialBook!</p>
+<button class="like-btn" onclick="likePost(this)">
+👍 Like <span>0</span>
+</button>
+</div>
+
+</div>
+
+</div>
 
 <script>
 function addPost(){
 
 let text=document.getElementById("postInput").value;
 
-if(text==""){
+if(text.trim()==""){
 alert("Write something first!");
 return;
 }
@@ -28,12 +126,24 @@ return;
 let post=document.createElement("div");
 post.className="post";
 
-post.innerHTML=
-"<h3>You</h3><p>"+text+
-"</p><button>👍 Like</button>";
+post.innerHTML=`
+<div class="user">You</div>
+<p>${text}</p>
+<button class="like-btn" onclick="likePost(this)">
+👍 Like <span>0</span>
+</button>
+`;
 
 document.getElementById("posts").prepend(post);
 
 document.getElementById("postInput").value="";
 }
+
+function likePost(btn){
+let count=btn.querySelector("span");
+count.innerText=parseInt(count.innerText)+1;
+}
 </script>
+
+</body>
+</html>
