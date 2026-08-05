@@ -1,63 +1,59 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Age Calculator</title>
+<title>SocialBook</title>
 <style>
 body{
-    font-family: Arial, sans-serif;
-    text-align:center;
-    padding:40px;
-    background:#f4f4f4;
+margin:0;
+font-family:Arial,sans-serif;
+background:#f5f5f5;
+}
+.header{
+background:linear-gradient(90deg,#7b2cff,#2196f3);
+color:white;
+padding:20px;
+text-align:center;
 }
 .container{
-    background:white;
-    padding:20px;
-    border-radius:10px;
-    max-width:400px;
-    margin:auto;
-    box-shadow:0 0 10px rgba(0,0,0,0.1);
+padding:20px;
 }
-input,button{
-    padding:10px;
-    margin:10px;
-    width:80%;
+.card{
+background:white;
+padding:15px;
+border-radius:10px;
+margin-bottom:15px;
+box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
-button{
-    background:#007bff;
-    color:white;
-    border:none;
-    border-radius:5px;
+.btn{
+background:#2196f3;
+color:white;
+padding:10px 20px;
+border:none;
+border-radius:5px;
 }
 </style>
 </head>
 <body>
 
-<div class="container">
-    <h2>Age Calculator</h2>
-    <input type="date" id="birthDate">
-    <br>
-    <button onclick="calculateAge()">Calculate Age</button>
-    <h3 id="result"></h3>
+<div class="header">
+<h1>SocialBook</h1>
+<p>Connect With Friends</p>
 </div>
 
-<script>
-function calculateAge() {
-    let birthDate = new Date(document.getElementById("birthDate").value);
-    let today = new Date();
+<div class="container">
+<div class="card">
+<h3>Welcome to SocialBook</h3>
+<p>Create posts, share photos and connect with friends.</p>
+<button class="btn">Get Started</button>
+</div>
 
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let month = today.getMonth() - birthDate.getMonth();
-
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-    }
-
-    document.getElementById("result").innerHTML =
-        "Your Age: " + age + " Years";
-}
-</script>
+<div class="card">
+<h3>Latest Post</h3>
+<p>Hello SocialBook Users! 🎉</p>
+</div>
+</div>
 
 </body>
 </html>
