@@ -1,52 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>SocialBook Feed</title>
-<style>
-body{
-font-family:Arial;
-background:#f0f2f5;
-margin:0;
-}
-.header{
-background:#7b2cff;
-color:white;
-padding:15px;
-font-size:22px;
-font-weight:bold;
-}
-.post{
-background:white;
-margin:15px;
-padding:15px;
-border-radius:10px;
-}
-button{
-padding:8px 15px;
-border:none;
-background:#2196f3;
-color:white;
-border-radius:5px;
-}
-</style>
-</head>
-<body>
-
 <div class="header">
 SocialBook Feed
 </div>
 
 <div class="post">
-<h3>Welcome To SocialBook 🎉</h3>
-<p>Your first social feed page is ready.</p>
-<button>👍 Like</button>
+<h3>Create Post</h3>
+
+<input type="text" id="postInput" placeholder="What's on your mind?"
+style="width:100%;padding:10px;">
+
+<br><br>
+
+<button onclick="addPost()">Post</button>
 </div>
 
-<div class="post">
-<h3>Omor Faruk</h3>
-<p>Building SocialBook from mobile 🚀</p>
-<button>👍 Like</button>
-</div>
+<div id="posts"></div>
 
-</body>
-</html>
+<script>
+function addPost(){
+
+let text=document.getElementById("postInput").value;
+
+if(text==""){
+alert("Write something first!");
+return;
+}
+
+let post=document.createElement("div");
+post.className="post";
+
+post.innerHTML=
+"<h3>You</h3><p>"+text+
+"</p><button>👍 Like</button>";
+
+document.getElementById("posts").prepend(post);
+
+document.getElementById("postInput").value="";
+}
+</script>
